@@ -18,7 +18,6 @@ public class TelaDisciplina extends AppCompatActivity {
         Intent intent = this.getIntent();
 
         Disciplina disciplina = (Disciplina) intent.getSerializableExtra("disciplina");
-        System.out.println("Tela Disciplina - disciplina.getId " + disciplina.getCodigo());
         telaDisciplinaHelper = new TelaDisciplinaHelper(this, disciplina);
     }
 }

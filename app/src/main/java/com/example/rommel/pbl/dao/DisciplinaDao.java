@@ -49,6 +49,12 @@ public class DisciplinaDao extends SQLiteOpenHelper {
         }
     }
 
+    public void deletar(Disciplina disciplina){
+        ContentValues values = new ContentValues();
+        String args[] = {"" + disciplina.getCodigo()};
+        getWritableDatabase().delete(TABELA, "id = ?", args);
+    }
+
     public ArrayList<Disciplina> getDisciplinas(){
         Disciplina disciplina;
         ArrayList<Disciplina> disciplinas = new ArrayList<>();

@@ -60,6 +60,15 @@ public class MainActivityHelper {
                 return false;
             }
         });
+        MenuItem deletar = menu.add("Deletar");
+        deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                disciplinaDao.deletar(disciplina);
+                carregarLista();
+                return false;
+            }
+        });
     }
 
     private void inicializarComponentes(){
