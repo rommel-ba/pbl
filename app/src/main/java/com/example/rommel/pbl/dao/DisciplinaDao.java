@@ -54,9 +54,6 @@ public class DisciplinaDao extends SQLiteOpenHelper {
             disciplina.setNome(cursor.getString(cursor.getColumnIndex("nome")));
             disciplinas.add(disciplina);
         }
-        for (Disciplina d : disciplinas){
-            System.out.println(d.getCodigo() + " " + d.getNome());
-        }
         return disciplinas;
     }
 }

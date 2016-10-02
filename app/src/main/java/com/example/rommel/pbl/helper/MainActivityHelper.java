@@ -66,10 +66,12 @@ public class MainActivityHelper {
         botaoAdicionar = (Button) activity.findViewById(R.id.btnAdicionar);
         acaoBotao(botaoAdicionar);
         activity.registerForContextMenu(lista);
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 disciplina = (Disciplina) adapterView.getItemAtPosition(i);
+                //System.out.println(disciplina.getNome());
+                return false;
             }
         });
     }

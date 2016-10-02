@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         helper = new MainActivityHelper(this);
+
         helper.carregarLista();
     }
 
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public void onCreateContextMenu (ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo){
         helper = new MainActivityHelper(this);
         helper.contextMenu(menu);
+        super.onCreateContextMenu(menu, view, menuInfo);
     }
 
 }

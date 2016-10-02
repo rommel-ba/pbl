@@ -37,8 +37,9 @@ public class TelaDisciplinaHelper {
         nptDisciplina = (EditText) activity.findViewById(R.id.nptDisciplina);
         btnSalvar = (Button) activity.findViewById(R.id.btnSalvar);
         acaoBotao(btnSalvar);
+        nptDisciplina.setText("teste");
         if(disciplina != null) {
-            nptDisciplina.setText(disciplina.getNome());
+            nptDisciplina.setText("Teste");
             System.out.println("Disciplina não é nulo");
         }
     }

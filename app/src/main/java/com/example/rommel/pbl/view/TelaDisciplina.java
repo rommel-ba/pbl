@@ -16,6 +16,7 @@ public class TelaDisciplina extends AppCompatActivity {
         setContentView(R.layout.activity_disciplina);
         if (this.getIntent().hasExtra("disciplina"))
             telaDisciplinaHelper = new TelaDisciplinaHelper(this, (Disciplina) getIntent().getSerializableExtra("disciplina"));
-        telaDisciplinaHelper = new TelaDisciplinaHelper(this);
+        else
+            telaDisciplinaHelper = new TelaDisciplinaHelper(this);
     }
 }
