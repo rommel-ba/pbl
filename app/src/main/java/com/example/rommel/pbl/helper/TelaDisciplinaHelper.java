@@ -31,15 +31,15 @@ public class TelaDisciplinaHelper {
     public TelaDisciplinaHelper(TelaDisciplina telaDisciplina, Disciplina disciplina){
         this.activity = telaDisciplina;
         this.disciplina = disciplina;
+        inicializarComponentes();
     }
 
     private void inicializarComponentes(){
         nptDisciplina = (EditText) activity.findViewById(R.id.nptDisciplina);
         btnSalvar = (Button) activity.findViewById(R.id.btnSalvar);
         acaoBotao(btnSalvar);
-        nptDisciplina.setText("teste");
         if(disciplina != null) {
-            nptDisciplina.setText("Teste");
+            nptDisciplina.setText(disciplina.getNome());
             System.out.println("Disciplina não é nulo");
         }
     }
@@ -49,7 +49,8 @@ public class TelaDisciplinaHelper {
             @Override
             public void onClick(View view) {
                 Toast toast = Toast.makeText(activity.getApplicationContext(), "Botão Salvar", Toast.LENGTH_LONG);
-                Disciplina disciplina = new Disciplina();
+                if(disciplina == null)
+                    disciplina = new Disciplina();
                 disciplina.setNome(nptDisciplina.getText().toString());
                 DisciplinaDao disciplinaDao = new DisciplinaDao(activity.getApplicationContext());
                 disciplinaDao.inserir(disciplina);

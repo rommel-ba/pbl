@@ -27,11 +27,12 @@ public class MainActivityHelper {
     private ListView lista;
     private Button botaoAdicionar;
 
-    //Variáveis da classe
-    private Disciplina disciplina;
+    //Variáivateveis da classe
+    protected static Disciplina disciplina;
     private ArrayList<Disciplina> disciplinas;
     private ArrayAdapter<Disciplina> adapter;
     private DisciplinaDao disciplinaDao;
+    private Intent intent;
 
     public MainActivityHelper(MainActivity activity) {
         this.activity = activity;
@@ -51,8 +52,10 @@ public class MainActivityHelper {
         atualizar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                Intent intent = new Intent(activity, TelaDisciplina.class);
+
+                intent = new Intent(activity, TelaDisciplina.class);
                 intent.putExtra("disciplina", disciplina);
+                System.out.println("Disciplina Id Intent " + disciplina.getCodigo());
                 activity.startActivity(intent);
                 return false;
             }
@@ -70,7 +73,9 @@ public class MainActivityHelper {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 disciplina = (Disciplina) adapterView.getItemAtPosition(i);
-                //System.out.println(disciplina.getNome());
+                intent = new Intent(activity, TelaDisciplina.class);
+                intent.putExtra("disciplina", disciplina);
+                System.out.println(disciplina.getNome());
                 return false;
             }
         });
@@ -80,7 +85,7 @@ public class MainActivityHelper {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity, TelaDisciplina.class);
+                intent = new Intent(activity, TelaDisciplina.class);
                 activity.startActivity(intent);
 
             }

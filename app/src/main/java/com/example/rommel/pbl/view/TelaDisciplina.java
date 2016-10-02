@@ -1,5 +1,6 @@
 package com.example.rommel.pbl.view;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -14,9 +15,10 @@ public class TelaDisciplina extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_disciplina);
-        if (this.getIntent().hasExtra("disciplina"))
-            telaDisciplinaHelper = new TelaDisciplinaHelper(this, (Disciplina) getIntent().getSerializableExtra("disciplina"));
-        else
-            telaDisciplinaHelper = new TelaDisciplinaHelper(this);
+        Intent intent = this.getIntent();
+
+        Disciplina disciplina = (Disciplina) intent.getSerializableExtra("disciplina");
+        System.out.println("Tela Disciplina - disciplina.getId " + disciplina.getCodigo());
+        telaDisciplinaHelper = new TelaDisciplinaHelper(this, disciplina);
     }
 }

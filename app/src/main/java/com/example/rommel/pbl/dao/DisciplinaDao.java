@@ -40,7 +40,13 @@ public class DisciplinaDao extends SQLiteOpenHelper {
     public void inserir(Disciplina disciplina){
         ContentValues values = new ContentValues();
         values.put("nome", disciplina.getNome());
-        getWritableDatabase().insert(TABELA, null, values);
+        if (disciplina.getCodigo() == 0){
+            getWritableDatabase().insert(TABELA, null, values);
+            System.out.println("Id disciplina = " + disciplina.getCodigo());
+        }else{
+            String args[] = {"" + disciplina.getCodigo()};
+            getWritableDatabase().update(TABELA, values, "id = ?", args);
+        }
     }
 
     public ArrayList<Disciplina> getDisciplinas(){
