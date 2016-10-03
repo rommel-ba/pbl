@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.rommel.pbl.R;
-import com.example.rommel.pbl.dao.DisciplinaDao;
+import com.example.rommel.pbl.dao.Banco;
 import com.example.rommel.pbl.model.Disciplina;
 import com.example.rommel.pbl.view.TelaDisciplina;
 
@@ -52,8 +52,8 @@ public class TelaDisciplinaHelper {
                 if(disciplina == null)
                     disciplina = new Disciplina();
                 disciplina.setNome(nptDisciplina.getText().toString());
-                DisciplinaDao disciplinaDao = new DisciplinaDao(activity.getApplicationContext());
-                disciplinaDao.inserir(disciplina);
+                Banco banco = new Banco(activity.getApplicationContext());
+                banco.inserir(disciplina);
                 activity.finish();
             }
         });

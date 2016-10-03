@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/activity_aluno_cadastro"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -9,16 +9,25 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.example.rommel.pbl.view.MainActivity">
+    tools:context="com.example.rommel.pbl.view.AlunoCadastro">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nptNomeAluno"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adicionar"
-        android:id="@+id/btnAdicionar"/>
+        android:text="Salvar"
+        android:id="@+id/btnAlunoSalvar"/>
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listaPrincipal">
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/listaAlunos">
     </ListView>
 </LinearLayout>
