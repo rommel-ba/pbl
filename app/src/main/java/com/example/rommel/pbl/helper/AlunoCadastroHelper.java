@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.rommel.pbl.R;
+import com.example.rommel.pbl.dao.AlunoDao;
 import com.example.rommel.pbl.dao.Banco;
 import com.example.rommel.pbl.model.Aluno;
 
@@ -22,7 +23,7 @@ public class AlunoCadastroHelper {
     private Activity activity;
 
     private Aluno aluno;
-    private Banco banco;
+    private AlunoDao alunoDao;
     private ArrayAdapter<Aluno> adapter;
     private ArrayList<Aluno> alunos;
 
@@ -37,7 +38,7 @@ public class AlunoCadastroHelper {
     }
 
     private void inicializarComponentes(){
-        banco = new Banco(activity.getApplicationContext());
+        alunoDao = new AlunoDao(activity.getApplicationContext());
         nomeAluno = (EditText) activity.findViewById(R.id.nptNomeAluno);
         btnSalvarAluno = (Button) activity.findViewById(R.id.btnAlunoSalvar);
         listaAlunos = (ListView) activity.findViewById(R.id.listaAlunos);
@@ -46,7 +47,7 @@ public class AlunoCadastroHelper {
     }
 
     private void listarAlunos(){
-        alunos = banco.getAlunos();
+        alunos = alunoDao.getAlunos();
         adapter = new ArrayAdapter(activity, android.R.layout.simple_list_item_1, alunos);
         listaAlunos.setAdapter(adapter);
 
@@ -63,7 +64,7 @@ public class AlunoCadastroHelper {
                 aluno = new Aluno();
                 aluno.setNome(nomeAluno.getText().toString());
                 System.out.println("AlunoCadastroHelper nome do aluno: " + aluno.getNome());
-                banco.inserir(aluno);
+                alunoDao.inserir(aluno);
                 listarAlunos();
                 //activity.finish();
 

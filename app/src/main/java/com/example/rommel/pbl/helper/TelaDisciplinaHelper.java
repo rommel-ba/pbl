@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.rommel.pbl.R;
 import com.example.rommel.pbl.dao.Banco;
+import com.example.rommel.pbl.dao.DisciplinaDao;
 import com.example.rommel.pbl.model.Disciplina;
 import com.example.rommel.pbl.view.TelaDisciplina;
 
@@ -18,6 +19,7 @@ import com.example.rommel.pbl.view.TelaDisciplina;
 public class TelaDisciplinaHelper {
     private Activity activity;
     private Disciplina disciplina;
+    private DisciplinaDao disciplinaDao;
 
     private EditText nptDisciplina;
     private Button btnSalvar;
@@ -35,6 +37,7 @@ public class TelaDisciplinaHelper {
     }
 
     private void inicializarComponentes(){
+        disciplinaDao = new DisciplinaDao(activity.getApplicationContext());
         nptDisciplina = (EditText) activity.findViewById(R.id.nptDisciplina);
         btnSalvar = (Button) activity.findViewById(R.id.btnSalvar);
         acaoBotao(btnSalvar);
@@ -53,7 +56,7 @@ public class TelaDisciplinaHelper {
                     disciplina = new Disciplina();
                 disciplina.setNome(nptDisciplina.getText().toString());
                 Banco banco = new Banco(activity.getApplicationContext());
-                banco.inserir(disciplina);
+                disciplinaDao.inserir(disciplina);
                 activity.finish();
             }
         });

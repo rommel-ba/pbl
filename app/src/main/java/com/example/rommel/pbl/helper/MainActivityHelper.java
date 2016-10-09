@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.rommel.pbl.dao.Banco;
+import com.example.rommel.pbl.dao.DisciplinaDao;
 import com.example.rommel.pbl.model.Disciplina;
 import com.example.rommel.pbl.view.AlunoCadastro;
 import com.example.rommel.pbl.view.MainActivity;
@@ -32,7 +33,7 @@ public class MainActivityHelper {
     protected static Disciplina disciplina;
     private ArrayList<Disciplina> disciplinas;
     private ArrayAdapter<Disciplina> adapter;
-    private Banco banco;
+    private DisciplinaDao disciplinaDao;
     private Intent intent;
 
     public MainActivityHelper(MainActivity activity) {
@@ -42,7 +43,7 @@ public class MainActivityHelper {
     }
 
     public void carregarLista(){
-        disciplinas = banco.getDisciplinas();
+        disciplinas = disciplinaDao.getDisciplinas();
         adapter = new ArrayAdapter<Disciplina>(activity,android.R.layout.simple_list_item_1, disciplinas);
         lista.setAdapter(adapter);
     }
@@ -65,7 +66,7 @@ public class MainActivityHelper {
         deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                banco.deletar(disciplina);
+                disciplinaDao.deletar(disciplina);
                 carregarLista();
                 return false;
             }
@@ -74,7 +75,7 @@ public class MainActivityHelper {
 
     private void inicializarComponentes(){
         disciplinas = new ArrayList<>();
-        banco = new Banco(activity.getApplicationContext());
+        disciplinaDao = new DisciplinaDao(activity.getApplicationContext());
         lista = (ListView) activity.findViewById(R.id.listaPrincipal);
         botaoAdicionar = (Button) activity.findViewById(R.id.btnAdicionar);
         acaoBotao(botaoAdicionar);

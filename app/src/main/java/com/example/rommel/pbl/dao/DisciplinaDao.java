@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class DisciplinaDao {
     private Banco banco;
 
-    DisciplinaDao(Context context){
+    public DisciplinaDao(Context context){
         banco = new Banco(context);
     }
 
