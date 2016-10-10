@@ -30,6 +30,9 @@ public class Banco extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(tabelaDisciplina());
         sqLiteDatabase.execSQL(tabelaAluno());
         sqLiteDatabase.execSQL(tabelaTurma());
+        sqLiteDatabase.execSQL(tabelaProblema());
+        sqLiteDatabase.execSQL(tabelaNota());
+        sqLiteDatabase.execSQL(tabelaSessao());
     }
 
     @Override
@@ -68,11 +71,10 @@ public class Banco extends SQLiteOpenHelper {
 
     private String tabelaProblema(){
         return "CREATE TABLE problema (" +
-                "  idProblema INTEGER AUTOINCREMENT," +
+                "  idProblema INTEGER PRIMARY KEY," +
                 "  descricao TEXT," +
                 "  dataInicio TEXT," +
-                "  dataEntrega TEXT," +
-                "  PRIMARY KEY (idProblema));";
+                "  dataEntrega TEXT);";
     }
 
     private String tabelaSessao(){
