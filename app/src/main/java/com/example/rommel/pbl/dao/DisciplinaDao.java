@@ -27,14 +27,14 @@ public class DisciplinaDao {
             System.out.println("Id disciplina = " + disciplina.getCodigo());
         }else{
             String args[] = {"" + disciplina.getCodigo()};
-            banco.getWritableDatabase().update("disciplina", values, "id = ?", args);
+            banco.getWritableDatabase().update("disciplina", values, "idDisciplina = ?", args);
         }
     }
 
     public void deletar(Disciplina disciplina){
         ContentValues values = new ContentValues();
         String args[] = {"" + disciplina.getCodigo()};
-        banco.getWritableDatabase().delete("disciplina", "id = ?", args);
+        banco.getWritableDatabase().delete("disciplina", "idDisciplina = ?", args);
     }
 
     public ArrayList<Disciplina> getDisciplinas(){
@@ -44,7 +44,7 @@ public class DisciplinaDao {
         Cursor cursor = banco.getReadableDatabase().rawQuery(sql, null);
         while (cursor.moveToNext()){
             disciplina = new Disciplina();
-            disciplina.setCodigo(cursor.getInt(cursor.getColumnIndex("id")));
+            disciplina.setCodigo(cursor.getInt(cursor.getColumnIndex("idDisciplina")));
             disciplina.setNome(cursor.getString(cursor.getColumnIndex("nome")));
             disciplinas.add(disciplina);
         }

@@ -28,14 +28,14 @@ public class AlunoDao {
             System.out.println("Id aluno = " + aluno.getId());
         }else{
             String args[] = {"" + aluno.getId()};
-            banco.getWritableDatabase().update("aluno", values, "id = ?", args);
+            banco.getWritableDatabase().update("aluno", values, "idAluno = ?", args);
         }
     }
 
     public void deletar(Aluno aluno){
         ContentValues values = new ContentValues();
         String args[] = {"" + aluno.getId()};
-        banco.getWritableDatabase().delete("aluno", "id = ?", args);
+        banco.getWritableDatabase().delete("aluno", "idAluno = ?", args);
     }
 
     public ArrayList<Aluno> getAlunos(){
@@ -45,7 +45,7 @@ public class AlunoDao {
         Cursor cursor = banco.getReadableDatabase().rawQuery(sql, null);
         while (cursor.moveToNext()){
             aluno = new Aluno();
-            aluno.setId(cursor.getInt(cursor.getColumnIndex("id")));
+            aluno.setId(cursor.getInt(cursor.getColumnIndex("idAluno")));
             aluno.setNome(cursor.getString(cursor.getColumnIndex("nome")));
             alunos.add(aluno);
         }
