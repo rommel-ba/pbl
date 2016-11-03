@@ -56,9 +56,10 @@ public class Banco extends SQLiteOpenHelper {
 
     private String tabelaTurma(){
         return "CREATE TABLE turma (" +
+                "  idTurma INTEGER NOT NULL," +
                 "  idAluno INTEGER NOT NULL," +
                 "  idDisciplina INTEGER NOT NULL," +
-                "  PRIMARY KEY (idAluno, idDisciplina)," +
+                "  PRIMARY KEY (idTurma, idAluno, idDisciplina)," +
                 "    FOREIGN KEY (idAluno)" +
                 "    REFERENCES aluno (idAluno)" +
                 "    ON DELETE NO ACTION" +

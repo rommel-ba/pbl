@@ -9,13 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.rommel.pbl.dao.Banco;
 import com.example.rommel.pbl.dao.DisciplinaDao;
 import com.example.rommel.pbl.model.Disciplina;
-import com.example.rommel.pbl.view.AlunoCadastro;
 import com.example.rommel.pbl.view.MainActivity;
 import com.example.rommel.pbl.R;
-import com.example.rommel.pbl.view.TelaDisciplina;
+import com.example.rommel.pbl.view.DisciplinaActivity;
+import com.example.rommel.pbl.view.TurmaActivity;
 
 import java.util.ArrayList;
 
@@ -55,7 +54,7 @@ public class MainActivityHelper {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
 
-                intent = new Intent(activity, TelaDisciplina.class);
+                intent = new Intent(activity, DisciplinaActivity.class);
                 intent.putExtra("disciplina", disciplina);
                 System.out.println("Disciplina Id Intent " + disciplina.getCodigo());
                 activity.startActivity(intent);
@@ -84,9 +83,8 @@ public class MainActivityHelper {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 disciplina = (Disciplina) adapterView.getItemAtPosition(i);
-                intent = new Intent(activity, TelaDisciplina.class);
+                intent = new Intent(activity, DisciplinaActivity.class);
                 intent.putExtra("disciplina", disciplina);
-                System.out.println(disciplina.getNome());
                 return false;
             }
         });
@@ -94,7 +92,9 @@ public class MainActivityHelper {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                intent = new Intent(activity, AlunoCadastro.class);
+                disciplina = (Disciplina) adapterView.getItemAtPosition(i);
+                intent = new Intent(activity, TurmaActivity.class);
+                intent.putExtra("disciplina", disciplina);
                 activity.startActivity(intent);
             }
         });
@@ -104,7 +104,7 @@ public class MainActivityHelper {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(activity, TelaDisciplina.class);
+                intent = new Intent(activity, DisciplinaActivity.class);
                 activity.startActivity(intent);
 
             }

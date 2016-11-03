@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         helper = new MainActivityHelper(this);
         helper.carregarLista();
+
     }
 
     @Override

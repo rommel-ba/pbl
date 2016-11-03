@@ -8,7 +8,7 @@ import com.example.rommel.pbl.R;
 import com.example.rommel.pbl.helper.TelaDisciplinaHelper;
 import com.example.rommel.pbl.model.Disciplina;
 
-public class TelaDisciplina extends AppCompatActivity {
+public class DisciplinaActivity extends AppCompatActivity {
     private TelaDisciplinaHelper telaDisciplinaHelper;
 
     @Override

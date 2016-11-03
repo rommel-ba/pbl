@@ -10,7 +10,7 @@ import com.example.rommel.pbl.R;
 import com.example.rommel.pbl.dao.Banco;
 import com.example.rommel.pbl.dao.DisciplinaDao;
 import com.example.rommel.pbl.model.Disciplina;
-import com.example.rommel.pbl.view.TelaDisciplina;
+import com.example.rommel.pbl.view.DisciplinaActivity;
 
 /**
  * Created by rommel on 01/10/16.
@@ -25,13 +25,13 @@ public class TelaDisciplinaHelper {
     private Button btnSalvar;
 
 
-    public TelaDisciplinaHelper(TelaDisciplina activity){
+    public TelaDisciplinaHelper(DisciplinaActivity activity){
         this.activity = activity;
         inicializarComponentes();
     }
 
-    public TelaDisciplinaHelper(TelaDisciplina telaDisciplina, Disciplina disciplina){
-        this.activity = telaDisciplina;
+    public TelaDisciplinaHelper(DisciplinaActivity disciplinaActivity, Disciplina disciplina){
+        this.activity = disciplinaActivity;
         this.disciplina = disciplina;
         inicializarComponentes();
     }
