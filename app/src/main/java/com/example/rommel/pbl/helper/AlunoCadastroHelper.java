@@ -49,7 +49,7 @@ public class AlunoCadastroHelper {
     private void inicializarComponentes(){
         alunoDao = new AlunoDao(activity.getApplicationContext());
         turmaDao = new TurmaDao(activity.getApplicationContext());
-        alunos = new ArrayList<>();
+        //alunos = new ArrayList<>();
         nomeAluno = (AutoCompleteTextView) activity.findViewById(R.id.nptNomeAluno);
         btnSalvarAluno = (Button) activity.findViewById(R.id.btnAlunoSalvar);
         listaAlunos = (ListView) activity.findViewById(R.id.listaAlunos);
@@ -62,7 +62,7 @@ public class AlunoCadastroHelper {
         if (disciplina == null) {
             alunosTurma = alunoDao.getAlunos();
         }else {
-            alunosTurma = turmaDao.alunosTurma(disciplina.getCodigo());
+            alunosTurma = turmaDao.alunosTurma((Integer) activity.getIntent().getSerializableExtra("id"));
             btnSalvarAluno.setText("Adicionar");
             adapter = new ArrayAdapter(activity, android.R.layout.simple_list_item_1, alunosTurma);
         }

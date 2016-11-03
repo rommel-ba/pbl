@@ -38,5 +38,10 @@ public class Turma implements Serializable{
     public void setIdTurma(int idTurma) {
         this.idTurma = idTurma;
     }
+
+    @Override
+    public String toString(){
+        return idTurma + " " + disciplina.getNome();
+    }
 }
 

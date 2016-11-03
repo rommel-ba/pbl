@@ -54,7 +54,9 @@ public class TurmaDao {
     public ArrayList<Aluno> alunosTurma(int id){
         ArrayList<Aluno> alunos = new ArrayList<>();
         Aluno aluno;
-        String sql = "select aluno.idAluno, aluno.nome from aluno inner join turma on aluno.idAluno = turma.idAluno where turma.idTurma = " + id + ";";
+        String sql = "select aluno.idAluno, aluno.nome, turma.idTurma from aluno " +
+                     "inner join turma on aluno.idAluno = turma.idAluno " +
+                     "where turma.idTurma = " + id + ";";
         Cursor cursor = banco.getReadableDatabase().rawQuery(sql, null);
         while (cursor.moveToNext()){
             aluno = new Aluno();
@@ -65,9 +67,21 @@ public class TurmaDao {
         return alunos;
     }
 
-    public ArrayList<Turma> listaTurmas(){
-
-        return null;
+    public ArrayList<Turma> listaTurmas(Disciplina disciplina){
+        String sql = "select distinct turma.idTurma, disciplina.nome from turma " +
+                     "inner join disciplina on turma.idDisciplina = disciplina.idDisciplina " +
+                     "where disciplina.idDisciplina = " +disciplina.getCodigo() +";";
+        Cursor cursor = banco.getReadableDatabase().rawQuery(sql, null);
+        ArrayList<Turma> turmas = new ArrayList<>();
+        while (cursor.moveToNext()){
+            turma = new Turma();
+            turma.setIdTurma(cursor.getInt(cursor.getColumnIndex("idTurma")));
+            Disciplina disciplinaBanco = new Disciplina();
+            disciplinaBanco.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+            turma.setDisciplina(disciplinaBanco);
+            turmas.add(turma);
+        }
+        return turmas;
     }
 
 }
