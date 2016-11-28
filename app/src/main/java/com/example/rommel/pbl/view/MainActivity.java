@@ -1,5 +1,7 @@
 package com.example.rommel.pbl.view;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -19,24 +21,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        helper = new MainActivityHelper(this);
-        helper.carregarLista();
-
+         helper = new MainActivityHelper(this);
     }
 
-    @Override
-    protected void onResume(){
-        super.onResume();
-        helper = new MainActivityHelper(this);
 
-        helper.carregarLista();
+    public  MainActivityHelper getMainActivityHelper(){
+        return this.helper;
     }
-
-    @Override
-    public void onCreateContextMenu (ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo){
-        helper = new MainActivityHelper(this);
-        helper.contextMenu(menu);
-        super.onCreateContextMenu(menu, view, menuInfo);
-    }
-
 }

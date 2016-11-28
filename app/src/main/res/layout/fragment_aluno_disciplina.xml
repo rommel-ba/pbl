@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_turma"
+    android:id="@+id/activity_aluno_cadastro"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -9,25 +9,24 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.example.rommel.pbl.view.TurmaActivity">
+    tools:context="com.example.rommel.pbl.view.AlunoFragment">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome"/>
+    <AutoCompleteTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lista de Turmas"
-        android:textAlignment="center"
-        />
-
+        android:id="@+id/edtAlunoTurma"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nova"
-        android:id="@+id/btnNovaTurma"/>
-
+        android:text="Adicionar"
+        android:id="@+id/btnAlunoAdicionar"/>
     <ListView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/lstTurmas">
+        android:id="@+id/listaAlunosTurma">
     </ListView>
 </LinearLayout>
-

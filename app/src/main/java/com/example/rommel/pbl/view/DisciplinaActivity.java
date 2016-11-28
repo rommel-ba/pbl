@@ -14,7 +14,7 @@ public class DisciplinaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_disciplina);
+        setContentView(R.layout.fragment_disciplina);
         Intent intent = this.getIntent();
 
         Disciplina disciplina = (Disciplina) intent.getSerializableExtra("disciplina");

@@ -25,7 +25,6 @@ public class AlunoDao {
         values.put("nome", aluno.getNome());
         if (aluno.getId() == 0){
             banco.getWritableDatabase().insert("aluno", null, values);
-            System.out.println("Id aluno = " + aluno.getId());
         }else{
             String args[] = {"" + aluno.getId()};
             banco.getWritableDatabase().update("aluno", values, "idAluno = ?", args);

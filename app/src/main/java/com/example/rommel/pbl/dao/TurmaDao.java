@@ -34,7 +34,7 @@ public class TurmaDao {
         values.put("idDisciplina", disciplina.getCodigo());
         values.put("idAluno", aluno.getId());
         banco.getReadableDatabase().insert("turma", null, values);
-        /*
+
         if (aluno.getId() == 0){
             banco.getWritableDatabase().insert("aluno", null, values);
             System.out.println("Id aluno = " + aluno.getId());
@@ -42,7 +42,7 @@ public class TurmaDao {
             String args[] = {"" + aluno.getId()};
             banco.getWritableDatabase().update("aluno", values, "idAluno = ?", args);
         }
-        */
+
     }
 
     public int getIdTurma(){
@@ -68,9 +68,10 @@ public class TurmaDao {
     }
 
     public ArrayList<Turma> listaTurmas(Disciplina disciplina){
-        String sql = "select distinct turma.idTurma, disciplina.nome from turma " +
-                     "inner join disciplina on turma.idDisciplina = disciplina.idDisciplina " +
-                     "where disciplina.idDisciplina = " +disciplina.getCodigo() +";";
+        String sql;
+        sql = "select distinct turma.idTurma, disciplina.idDisciplina, disciplina.nome from turma " +
+              "inner join disciplina on turma.idDisciplina = disciplina.idDisciplina " +
+                "where disciplina.idDisciplina = " +disciplina.getCodigo() +";";
         Cursor cursor = banco.getReadableDatabase().rawQuery(sql, null);
         ArrayList<Turma> turmas = new ArrayList<>();
         while (cursor.moveToNext()){
@@ -78,10 +79,28 @@ public class TurmaDao {
             turma.setIdTurma(cursor.getInt(cursor.getColumnIndex("idTurma")));
             Disciplina disciplinaBanco = new Disciplina();
             disciplinaBanco.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+            disciplinaBanco.setCodigo(cursor.getInt(cursor.getColumnIndex("idDisciplina")));
             turma.setDisciplina(disciplinaBanco);
             turmas.add(turma);
         }
         return turmas;
     }
 
+    public ArrayList<Turma> listaTodasTurmas(){
+        String sql;
+        sql ="select distinct turma.idTurma, disciplina.idDisciplina, disciplina.nome from turma " +
+                "inner join disciplina on turma.idDisciplina = disciplina.idDisciplina;";
+        Cursor cursor = banco.getReadableDatabase().rawQuery(sql, null);
+        ArrayList<Turma> turmas = new ArrayList<>();
+        while (cursor.moveToNext()){
+            turma = new Turma();
+            turma.setIdTurma(cursor.getInt(cursor.getColumnIndex("idTurma")));
+            Disciplina disciplinaBanco = new Disciplina();
+            disciplinaBanco.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+            disciplinaBanco.setCodigo(cursor.getInt(cursor.getColumnIndex("idDisciplina")));
+            turma.setDisciplina(disciplinaBanco);
+            turmas.add(turma);
+        }
+        return turmas;
+    }
 }
